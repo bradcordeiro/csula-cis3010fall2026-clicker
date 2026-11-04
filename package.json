@@ -1,0 +1,53 @@
+{
+  "name": "acele",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "node ./build/web.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@eslint/compat": "^1.4.1",
+    "@eslint/js": "^9.39.2",
+    "@number-flow/react": "^0.6.2",
+    "@stylistic/eslint-plugin": "^3.1.0",
+    "@tailwindcss/webpack": "^4.3.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@typescript-eslint/parser": "^8.56.0",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.2",
+    "bulma": "^1.0.4",
+    "css-loader": "^7.1.5",
+    "eslint": "^9.39.2",
+    "eslint-config-airbnb-extended": "^2.3.3",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-n": "^17.23.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "html-webpack-plugin": "^5.6.8",
+    "mini-css-extract-plugin": "^2.10.2",
+    "postcss-loader": "^8.2.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "sass": "^1.107.1",
+    "sass-loader": "^17.1.0",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.4.2",
+    "typescript-eslint": "^8.72.1",
+    "webpack-cli": "^5.0.1",
+    "webpack-node-externals": "^3.0.0"
+  }
+}

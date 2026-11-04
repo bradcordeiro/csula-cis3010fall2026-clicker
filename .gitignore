@@ -1,0 +1,9 @@
+.env
+.DS_Store
+.vscode
+samples
+build
+node_modules
+public
+
+script.ts
