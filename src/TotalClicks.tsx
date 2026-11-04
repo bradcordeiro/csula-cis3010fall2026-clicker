@@ -25,7 +25,7 @@ export default function TotalClicks(props: TotalClicksProps): React.JSX.Element 
 */
   return (
     <h1 className='is-size-1'>
-      <NumberFlow value={Number(clickCount)} />
+      <NumberFlow value={Number(clickCount)} transformTiming={{ duration: 500, easing: 'cubic-bezier(0.19, 1, 0.22, 1)' }}/>
     </h1>
   );
 }

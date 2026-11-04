@@ -15,15 +15,23 @@ export default function ClickGenerator(props: ClickGeneratorProps): React.JSX.El
     clickAdder,
   } = props;
 
-  if (count < 1) return <div />;
-
   const clicksToAdd = count * clicks;
 
   React.useEffect(() => {
-    const timer = setInterval(() => clickAdder(clicksToAdd), 1000);
+    let subSecondClicks = clicks * count;
+    let timeInterval = 1000; // 1 second
+
+    if (clicks > 10) {
+      timeInterval = 100; // 1/10 second
+      subSecondClicks = Math.floor(clicks / 10) * count;
+    }
+
+    const timer = setInterval(() => clickAdder(subSecondClicks), timeInterval);
 
     return () => clearInterval(timer);
   }, [count, clicks]);
+
+  if (count < 1) return <div />;
 
   return (
     <div>
