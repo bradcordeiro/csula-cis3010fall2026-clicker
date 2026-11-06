@@ -6,15 +6,15 @@ import MainClick from './MainClick';
 import Store from './Store';
 import TotalClicks from './TotalClicks';
 
-const initialAutoClickerNames: [string, string][] = [];
+const autoClickerNames: [string, string][] = [];
 const initialAutoClickerCounts: number[] = [];
-const initialAutoClickerClicks: number[] = [];
+const autoClickerClicks: number[] = [];
 const initialAutoClickerCosts: number[] = [];
 
 Object.keys(AutoClickers).forEach((key) => {
-  initialAutoClickerNames.push(AutoClickers[key].displayname);
+  autoClickerNames.push(AutoClickers[key].displayname);
+  autoClickerClicks.push(AutoClickers[key].clickvalue);
   initialAutoClickerCounts.push(0);
-  initialAutoClickerClicks.push(AutoClickers[key].clickvalue);
   initialAutoClickerCosts.push(AutoClickers[key].cost);
 });
 
@@ -30,9 +30,7 @@ function createNewStateArray<T>(oldValues: T[], targetIndex: number, newValue: T
 
 export default function App(): React.JSX.Element {
   const [clickCount, setClickcount] = React.useState<bigint>(0n);
-  const [autoClickerNames] = React.useState<[string, string][]>(initialAutoClickerNames);
   const [autoClickerCounts, setAutoClickerCounts] = React.useState<number[]>(initialAutoClickerCounts);
-  const [autoClickerClicks] = React.useState<number[]>(initialAutoClickerClicks);
   const [autoClickerCosts, setAutoClickerCosts] = React.useState<number[]>(initialAutoClickerCosts);
 
   const addClicks = (count: number) => setClickcount((c) => c + BigInt(count));
