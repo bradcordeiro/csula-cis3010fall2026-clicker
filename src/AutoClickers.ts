@@ -9,13 +9,13 @@ export type AutoClickerCollection = Record<string, AutoClickerAttributes>;
 
 const AutoClickers: AutoClickerCollection = {
   autoclicker1: {
-    displayname: ['Elf', 'Elves'],
+    displayname: ['🧝Elf🧝', '🧝Elves🧝'],
     clickvalue: 1,
     cost: 15,
     count: 0,
   },
   autoclicker2: {
-    displayname: ['Santa', 'Santas'],
+    displayname: ['🎅Santa🎅', '🎅Santas🎅'],
     clickvalue: 10,
     cost: 50,
     count: 0,
