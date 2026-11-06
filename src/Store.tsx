@@ -6,7 +6,7 @@ interface StoreProps {
   buy: (index: number) => void;
   costs: number[];
   currentClicks: bigint;
-  names: string[];
+  names: [string, string][];
 }
 
 export default function Store(props: StoreProps): React.JSX.Element {
@@ -19,14 +19,14 @@ export default function Store(props: StoreProps): React.JSX.Element {
 
   return (
     <div>
-      {names.map((name, index) => (
+      {names.map((n, index) => (
         <StoreItem
           key={`store-${index}`}
           buy={buy}
           cost={costs[index]}
           currentClicks={currentClicks}
           index={index}
-          name={name}
+          names={n}
       />))}
     </div>
   );

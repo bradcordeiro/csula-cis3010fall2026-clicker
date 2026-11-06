@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface ClickGeneratorProps {
-  name: string;
+  names: [string, string];
   clicks: number;
   count: number;
   clickAdder: (count: number) => void;
@@ -9,7 +9,7 @@ export interface ClickGeneratorProps {
 
 export default function ClickGenerator(props: ClickGeneratorProps): React.JSX.Element {
   const {
-    name,
+    names,
     clicks,
     count,
     clickAdder,
@@ -33,11 +33,16 @@ export default function ClickGenerator(props: ClickGeneratorProps): React.JSX.El
 
   if (count < 1) return <div />;
 
+  const displayName = count > 1 ? names[1] : names[0];
+  const canePlural = clicksToAdd > 1 ? 's' : '';
+
   return (
     <div>
-      <h3 className='is-size-3'>{name}</h3>
-      <h4 className='is-size-4'>{clicksToAdd} per second</h4>
-      <h5 className='is-size-5'>{clicksToAdd} clicks each for {count}</h5>
+      <h3 className='is-size-3'>
+        <strong>
+          {count}
+        </strong> {displayName}</h3>
+      <h4 className='is-size-4'>Making {clicksToAdd} Candy Cane{canePlural} per second</h4>
     </div>
   );
 }

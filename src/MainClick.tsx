@@ -14,7 +14,7 @@ export default function MainClick(props: MainClickProps): React.JSX.Element {
   return (
     <div className='has-text-centered'>
       <button className='button button-large' onClick={updateCount}>
-        Click Me
+        Make Candy Cane
       </button>
     </div>
   );

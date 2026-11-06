@@ -10,22 +10,23 @@ interface TotalClicksProps {
 
 export default function TotalClicks(props: TotalClicksProps): React.JSX.Element {
   const { clickCount } = props;
-  /*
-  if (clickCount > standardNotationDisplayMax) {
-    while (clickCount > Number.MAX_SAFE_INTEGER) {
-      clickCount /= 10n;
-      addedExponent += 1;
-    }
+  let base = clickCount;
+  let exponent = 0;
 
-    const num = Number(BigInt.asUintN(Number.MAX_SAFE_INTEGER, clickCount));
-    const [base, exp] = num.toExponential(3).split('e');
-
-    display = `${base}e${Number.parseInt(exp, 10) + addedExponent}`;
+  while (base > Number.MAX_SAFE_INTEGER) {
+    base /= 10n;
+    exponent += 1;
   }
-*/
+
+  const exponentDisplay = exponent > 0 ? `e${exponent}` : '';
+
   return (
     <h1 className='is-size-1'>
-      <NumberFlow value={Number(clickCount)} transformTiming={{ duration: 500, easing: 'cubic-bezier(0.19, 1, 0.22, 1)' }}/>
+      <NumberFlow
+        value={Number(clickCount)}
+        transformTiming={{ duration: 500, easing: 'cubic-bezier(0.19, 1, 0.22, 1)' }}
+        suffix={exponentDisplay}
+      />
     </h1>
   );
 }
