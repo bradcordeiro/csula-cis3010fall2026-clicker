@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './AutoClickers.json';
 import ClickGenerators from './ClickGenerators';
 import MainClick from './MainClick';
 import SaveHelpers from './SaveHelpers';
@@ -20,9 +21,12 @@ function createNewStateArray<T>(oldValues: T[], targetIndex: number, newValue: T
 
 export default function App(): React.JSX.Element {
   const [clickCount, setClickcount] = React.useState<bigint>(0n);
-  const [autoClickerNames, setAutoClickerNames] = React.useState<[string, string][]>([]);
+  const [autoClickerNames, setAutoClickerNames] = React.useState<string[]>([]);
+  const [autoClickerBackgrounds, setAutoClickerBackgrounds] = React.useState<string[]>([]);
+  const [autoClickerIcons, setAutoClickerIcons] = React.useState<string[]>([]);
   const [autoClickerCounts, setAutoClickerCounts] = React.useState<number[]>([]);
   const [autoClickerClicks, setAutoClickerClicks] = React.useState<number[]>([]);
+  const [storeBackgrounds, setStoreBackgrounds] = React.useState<string[]>([]);
   const [autoClickerCosts, setAutoClickerCosts] = React.useState<number[]>([]);
   const stateRef = React.useRef({ clickCount, autoClickerCounts, autoClickerCosts });
 
@@ -52,7 +56,10 @@ export default function App(): React.JSX.Element {
         const saved = SaveHelpers.getSavedState();
 
         setAutoClickerNames(keys.map((key) => defaults[key].displayname));
+        setAutoClickerBackgrounds(keys.map((key) => defaults[key].background));
+        setAutoClickerIcons(keys.map((key) => defaults[key].icon));
         setAutoClickerClicks(keys.map((key) => defaults[key].clickvalue));
+        setStoreBackgrounds(keys.map((key) => defaults[key].storebackground));
         setClickcount(saved?.clickCount ?? 0n);
         setAutoClickerCounts(saved?.autoClickerCounts ?? initialAutoClickerCounts);
         setAutoClickerCosts(saved?.autoClickerCosts ?? initialAutoClickerCosts);
@@ -73,17 +80,29 @@ export default function App(): React.JSX.Element {
             <TotalClicks clickCount={clickCount} />
           </div>
         </div>
-        <div className='fixed-grid has-3-cols'>
-          <div className="grid">
-            <div className='column click-column click-row'>
-              <MainClick clickAdder={addClicks} />
-            </div>
-            <div className='column autoclicker-column click-row'>
-              <ClickGenerators names={autoClickerNames} clicks={autoClickerClicks} counts={autoClickerCounts} clickAdder={addClicks} />
-            </div>
-            <div className='column store-column click-row'>
-              <Store currentClicks={clickCount} names={autoClickerNames} costs={autoClickerCosts} buy={buyAutoclicker}/>
-            </div>
+        <div className='columns height-560'>
+          <div className='column click-column is-one-third'>
+            <MainClick clickAdder={addClicks} />
+          </div>
+          <div className='column autoclicker-column is-one-third p-0'>
+            <ClickGenerators
+              names={autoClickerNames}
+              backgrounds={autoClickerBackgrounds}
+              icons={autoClickerIcons}
+              clicks={autoClickerClicks}
+              counts={autoClickerCounts}
+              clickAdder={addClicks}
+            />
+          </div>
+          <div className='column store-column is-one-third p-0'>
+            <Store
+              currentClicks={clickCount}
+              names={autoClickerNames}
+              costs={autoClickerCosts}
+              buy={buyAutoclicker}
+              icons={autoClickerIcons}
+              backgrounds={storeBackgrounds}
+            />
           </div>
         </div>
       </div>

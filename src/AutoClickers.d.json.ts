@@ -1,5 +1,8 @@
 interface AutoClickerAttributes {
-  displayname: [string, string];
+  displayname: string;
+  icon: string;
+  background: string;
+  storebackground: string;
   clickvalue: number;
   cost: number;
   count: number;

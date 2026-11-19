@@ -1,27 +1,36 @@
 import React from 'react';
 
+import StoreItemIcon from './StoreItemIcon';
+
 interface StoreItemProps {
   buy: (index: number) => void;
-  names: [string, string];
+  name: string;
   cost: number;
   currentClicks: bigint;
   index: number;
+  icon?: string;
+  background: string;
 }
 
 export default function StoreItem(props: StoreItemProps): React.JSX.Element {
   const {
+    background,
     buy,
     cost,
     currentClicks,
     index,
-    names,
+    icon,
+    name,
   } = props;
 
   const disabled = cost > currentClicks;
 
   return (
-    <button className={`button ${disabled ? 'is-outline' : ''}`} disabled={disabled} onClick={() => buy(index)}>
-      Buy {names[0]} for {cost} Candy Canes
-    </button>
+    <div className="store-box" style={{ backgroundImage: `url("/img/${background}")` }}>
+      <button className={`button store-button ${disabled ? 'is-outline' : ''}`} disabled={disabled} onClick={() => buy(index)}>
+        <StoreItemIcon icon={icon} />
+        Buy {name} for {cost}
+      </button>
+    </div>
   );
 }

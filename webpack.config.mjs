@@ -18,9 +18,6 @@ export default {
     new HtmlWebpackPlugin({ template: path.resolve(currentDir, 'src', 'index.html') }),
     new MiniCssExtractPlugin(),
   ],
-  ignoreWarnings: [{
-    module: /\.\/src\/index.scss/,
-  }],
   module: {
     rules: [
       {
@@ -44,7 +41,7 @@ export default {
           'sass-loader',
         ],
       }, {
-        test: /\.svg$/,
+        test: /\.(svg|png)$/,
         use: [
           {
             loader: 'file-loader',

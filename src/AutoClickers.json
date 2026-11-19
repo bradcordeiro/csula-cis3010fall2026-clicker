@@ -1,38 +1,65 @@
 {
   "autoclicker1": {
-    "displayname": ["🧝Elf🧝", "🧝Elves🧝"],
+    "displayname": "Elf Worker",
+    "background": "autoclickerbg-02-festive-village.png",
+    "storebackground": "storebg-01-Cozy Storybook Shop.png",
+    "icon": "autoclickericon-02-Cheerful Christmas Elf.png",
     "clickvalue": 1,
     "cost": 15,
     "count": 0
   },
   "autoclicker2": {
-    "displayname": ["🎅Santa🎅", "🎅Santas🎅"],
+    "displayname": "Santa Clone",
+    "background": "autoclickerbg-03-winter-night.png",
+    "storebackground": "storebg-02-Cheerful candy shop panorama.png",
+    "icon": "autoclickericon-01-Smiling Santa game icon.png",
     "clickvalue": 10,
     "cost": 50,
     "count": 0
   },
   "autoclicker3": {
-    "displayname": ["🦌Reindeer🦌", "🦌Reindeer🦌"],
+    "displayname": "Pack Reindeer",
+    "background": "autoclickerbg-01-snowy-forest.png",
+    "storebackground": "storebg-03-Snowy winter market of lights.png",
+    "icon": "autoclickericon-03-Cute Red-Nosed Reindeer Icon.png",
     "clickvalue": 50,
     "cost": 500,
     "count": 0
   },
   "autoclicker4": {
-    "displayname": ["Auto Clicker #4", "Auto Clicker #4s"],
+    "displayname": "Gingerbread Servant",
+    "background": "autoclickerbg-06-gingerbread-village.png",
+    "storebackground": "storebg-04-Cheerful toy store holiday panorama.png",
+    "icon": "autoclickericon-07-Smiling Gingerbread Christmas Game Icon-4.png",
     "clickvalue": 500,
     "cost": 2500,
     "count": 0
   },
   "autoclicker5": {
-    "displayname": ["Auto Clicker #5", "Auto Clicker #5s"],
+    "displayname": "Snowletariat",
+    "background": "autoclickerbg-05-frozen-pond.png",
+    "storebackground": "storebg-05-Cheerful Neighborhood Grocery Market.png",
+    "icon": "autoclickericon-06-Happy Snowman With Red Scarf-3.png",
     "clickvalue": 10000,
     "cost": 25000,
     "count": 0
   },
   "autoclicker6": {
-    "displayname": ["Auto Clicker #7", "Auto Clicker #7s"],
+    "displayname": "Penguin Peon",
+    "background": "autoclickerbg-07-cozy-cabin.png",
+    "storebackground": "storebg-06-Cheerful department store panorama.png",
+    "icon": "autoclickericon-05-Cheery Penguin Winter Icon-2.png",
     "clickvalue": 50000,
     "cost": 250000,
+    "count": 0
+  },
+  "autoclicker7": {
+    "displayname": "Child Laborer",
+    "background": "autoclickerbg-04-candy-cane-forest.png ",
+    "icon": "autoclickericon-04-Cheerful Victorian chimney sweep-1.png ",
+    "storebackground": "storebg-07-Cheerful Snowy Shopping Street.png",
+    "clickvalue": 75000,
+    "cost": 1000000,
     "count": 0
   }
 }

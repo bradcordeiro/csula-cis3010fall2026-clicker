@@ -1,17 +1,22 @@
-@use "bulma/sass/base";
-@use "bulma/sass/themes";
-@use "bulma/sass/grid";
-@use "bulma/sass/elements/button";
-@use "bulma/sass/helpers/spacing";
-@use "bulma/sass/helpers/typography";
-
-.game {
-  width: 100vh;
-  height: 100vh;
-}
-
 .grid {
   gap: 0 !important;
+}
+
+.total-row {
+  min-height: 84px;
+}
+
+.main-click {
+  transition: transform 0.1s ease-in-out;
+}
+
+.main-click:active {
+  transform: translateX(2px);
+  transform: translateY(2px);
+}
+
+.height-560 {
+  height: 560px;
 }
 
 .click-column {
@@ -26,3 +31,19 @@
   background-color: red;
 }
 
+.store-button {
+  height: 70px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.autoclicker-box {
+  background-size: cover;
+  height: 80px;
+  overflow: hidden;
+}
+
+.store-box {
+  background-size: cover;
+  height: 80px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 
-import NumberFlow from '@number-flow/react';
+import TotalClickInteger from './TotalClickInteger';
+import TotalClickScientific from './TotalClickScientific';
 
 interface TotalClicksProps {
   clickCount: bigint;
@@ -10,23 +11,10 @@ interface TotalClicksProps {
 
 export default function TotalClicks(props: TotalClicksProps): React.JSX.Element {
   const { clickCount } = props;
-  let base = clickCount;
-  let exponent = 0;
 
-  while (base > BigInt(Number.MAX_SAFE_INTEGER)) {
-    base /= 10n;
-    exponent += 1;
+  if (clickCount < BigInt(Number.MAX_SAFE_INTEGER)) {
+    return <TotalClickInteger count={Number(clickCount)} />;
   }
 
-  const exponentDisplay = exponent > 0 ? `e${exponent}` : '';
-
-  return (
-    <h1 className='is-size-1'>
-      <NumberFlow
-        value={Number(clickCount)}
-        transformTiming={{ duration: 500, easing: 'cubic-bezier(0.19, 1, 0.22, 1)' }}
-        suffix={exponentDisplay}
-      />
-    </h1>
-  );
+  return <TotalClickScientific count={clickCount} />;
 }

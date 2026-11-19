@@ -1,21 +1,26 @@
 import React from 'react';
 
+import ClickGeneratorIcon from './ClickGeneratorIcon';
+
 export interface ClickGeneratorProps {
-  names: [string, string];
+  name: string;
   clicks: number;
   count: number;
+  background: string;
+  icon: string;
   clickAdder: (count: number) => void;
 }
 
 export default function ClickGenerator(props: ClickGeneratorProps): React.JSX.Element {
   const {
-    names,
+    background,
+    icon,
     clicks,
     count,
     clickAdder,
   } = props;
 
-  const clicksToAdd = count * clicks;
+  // const clicksToAdd = count * clicks;
 
   React.useEffect(() => {
     let subSecondClicks = clicks * count;
@@ -31,18 +36,9 @@ export default function ClickGenerator(props: ClickGeneratorProps): React.JSX.El
     return () => clearInterval(timer);
   }, [count, clicks]);
 
-  if (count < 1) return <div />;
-
-  const displayName = count > 1 ? names[1] : names[0];
-  const canePlural = clicksToAdd > 1 ? 's' : '';
-
   return (
-    <div>
-      <h3 className='is-size-3'>
-        <strong>
-          {count}
-        </strong> {displayName}</h3>
-      <h4 className='is-size-4'>Making {clicksToAdd} Candy Cane{canePlural} per second</h4>
+    <div className="autoclicker-box" style={{ backgroundImage: `url("/img/${background}")` }}>
+       <ClickGeneratorIcon count={count} icon={icon} />
     </div>
   );
 }

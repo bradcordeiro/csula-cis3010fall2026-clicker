@@ -1,5 +1,7 @@
 import React from 'react';
 
+import BigCandyCane from './images/mainclick-Cheerful red-and-white candy cane.png';
+
 interface MainClickProps {
   clickAdder: (count: number) => void;
 }
@@ -13,8 +15,8 @@ export default function MainClick(props: MainClickProps): React.JSX.Element {
 
   return (
     <div className='has-text-centered'>
-      <button className='button button-large' onClick={updateCount}>
-        Make Candy Cane
+      <button className="main-click" onClick={updateCount}>
+        <img src={BigCandyCane} alt='Clickable Candy Cane' />
       </button>
     </div>
   );
