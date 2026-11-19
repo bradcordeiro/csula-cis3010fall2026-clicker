@@ -1,1 +1,28 @@
-@use "bulma"
+@use "bulma/sass/base";
+@use "bulma/sass/themes";
+@use "bulma/sass/grid";
+@use "bulma/sass/elements/button";
+@use "bulma/sass/helpers/spacing";
+@use "bulma/sass/helpers/typography";
+
+.game {
+  width: 100vh;
+  height: 100vh;
+}
+
+.grid {
+  gap: 0 !important;
+}
+
+.click-column {
+  background-color: white;
+}
+
+.autoclicker-column {
+  background-color: green;
+}
+
+.store-column {
+  background-color: red;
+}
+

@@ -1,102 +1,46 @@
-/* eslint-disable n/no-unsupported-features/node-builtins */
-
-interface SaveState {
+export interface SaveState {
   clickCount: bigint;
   autoClickerCounts: number[];
   autoClickerCosts: number[];
 }
 
-type EncodedState = [
-  string, // clickCount
-  number[], // autoClickerCounts
-  number[], // autoClickerCosts
-];
-
-let publicKey: CryptoKey | null = null;
-
-async function getPublicKey(): Promise<CryptoKey | null> {
-  if (publicKey) return publicKey;
-
-  return new Promise((resolve) => {
-    if (publicKey) resolve(publicKey);
-
-    fetch('/public_key.pem')
-      .then(async (response) => response.text())
-      .then((pem) => {
-        const key = pem.replace(/-----BEGIN [^-]+-----/, '')
-          .replace(/-----END [^-]+-----/, '')
-          .replace(/\s+/g, '');
-
-        const binaryString = window.atob(key);
-        const buff = new Uint8Array(binaryString.length);
-
-        for (let i = 0; i < binaryString.length; i += 1) {
-          buff[i] = binaryString.charCodeAt(i);
-        }
-
-        window.crypto.subtle.importKey(
-          'spki',
-          buff,
-          { name: 'RSA-OAEP', hash: 'SHA-256' },
-          true,
-          ['encrypt'],
-        )
-          .then((cryptoKey) => {
-            publicKey = cryptoKey;
-            resolve(publicKey);
-          });
-      })
-      .catch(() => resolve(null));
-  });
-}
+const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
 
 const SaveHelpers = {
-  async encryptStatus(state: SaveState): Promise<ArrayBuffer | null> {
-    publicKey ??= await getPublicKey();
+  encryptState(state: SaveState): string {
+    const formatted = { ...state, clickCount: state.clickCount.toString() };
+    const json = JSON.stringify(formatted);
 
-    if (publicKey) {
-      const encodedState: EncodedState = [
-        state.clickCount.toString(),
-        state.autoClickerCounts,
-        state.autoClickerCosts,
-      ];
-      const savedStatus = JSON.stringify(encodedState);
-      return window.crypto.subtle.encrypt({ name: 'RSA-OAEP' }, publicKey, Uint8Array.from(savedStatus));
-    }
+    const bytes = textEncoder.encode(json);
+    const binString = Array.from(bytes, (byte) => String.fromCodePoint(byte)).join('');
 
-    return null;
+    return btoa(binString);
   },
 
-  async saveStatus(state: SaveState): Promise<void> {
-    const encrypted = await SaveHelpers.encryptStatus(state);
+  decryptState(state: string): SaveState {
+    const json = textDecoder.decode(Uint8Array.from(atob(state), (c) => c.charCodeAt(0)));
+    const parsed = JSON.parse(json) as SaveState;
+
+    return {
+      ...parsed,
+      clickCount: BigInt(parsed.clickCount),
+    };
+  },
+
+  saveState(state: SaveState): void {
+    const encrypted = SaveHelpers.encryptState(state);
 
     if (encrypted) {
-      const string = new Uint8Array(encrypted).toHex();
-      localStorage.setItem('state', string);
+      localStorage.setItem('state', encrypted);
     }
   },
 
-  async restoreStatus(): Promise<SaveState | null> {
+  getSavedState(): SaveState | null {
     const encryptedState = localStorage.getItem('state');
 
     if (encryptedState) {
-      const decryptRequest = await fetch('http://localhost:3000/api/restore', {
-        method: 'POST',
-        body: encryptedState,
-      });
-
-      console.log('decryptRequest', decryptRequest);
-
-      if (decryptRequest.ok) {
-        const restoredState = await decryptRequest.json() as EncodedState;
-        console.log('restoredState', restoredState);
-
-        return {
-          clickCount: BigInt(restoredState[0]),
-          autoClickerCounts: restoredState[1],
-          autoClickerCosts: restoredState[2],
-        };
-      }
+      return SaveHelpers.decryptState(encryptedState);
     }
 
     return null;

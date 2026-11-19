@@ -19,9 +19,11 @@ export default function ClickGenerators(props: ClickGeneratorsProps): React.JSX.
 
   return (
     <div className="fixed-grid has-1-cols">
-      { names.map((n, index) => (
-        <ClickGenerator key={`generator-${index}`} names={n} count={counts[index]} clicks={clicks[index]} clickAdder={clickAdder} />
-      )) }
+      <div className="grid">
+        { names.map((n, index) => (
+          <ClickGenerator key={`generator-${index}`} names={n} count={counts[index]} clicks={clicks[index]} clickAdder={clickAdder} />
+        )) }
+      </div>
     </div>
   );
 }

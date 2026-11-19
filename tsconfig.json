@@ -6,7 +6,7 @@
   ],
   "exclude": ["node_modules", "**/*.spec.js"],
   "compilerOptions": {
-    "rootDir": ".",
+    "allowArbitraryExtensions": true,
     "esModuleInterop": true,
     "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -15,8 +15,10 @@
     "noImplicitAny": true,
     "outDir": "./public",
     "removeComments": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "target": "ESNext",
+    "target": "ESNext"
   }
 }

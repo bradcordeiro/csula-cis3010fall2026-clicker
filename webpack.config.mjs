@@ -55,6 +55,13 @@ export default {
           },
         ],
       },
+      {
+        test: /AutoClickers\.json$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'data.json',
+        },
+      },
     ],
   },
 };

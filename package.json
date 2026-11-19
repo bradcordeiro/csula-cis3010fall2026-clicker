@@ -1,11 +1,9 @@
 {
-  "name": "acele",
+  "name": "csula-cis3010fall2026-clicker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "node ./build/web.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -25,7 +23,6 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@typescript-eslint/parser": "^8.56.0",
-    "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.2",
     "bulma": "^1.0.4",
     "css-loader": "^7.1.5",
@@ -44,10 +41,9 @@
     "react-dom": "^19.3.1",
     "sass": "^1.107.1",
     "sass-loader": "^17.1.0",
-    "style-loader": "^4.0.0",
     "ts-loader": "^9.4.2",
     "typescript-eslint": "^8.72.1",
     "webpack-cli": "^5.0.1",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-dev-server": "^6.1.0"
   }
 }

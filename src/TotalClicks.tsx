@@ -13,7 +13,7 @@ export default function TotalClicks(props: TotalClicksProps): React.JSX.Element 
   let base = clickCount;
   let exponent = 0;
 
-  while (base > Number.MAX_SAFE_INTEGER) {
+  while (base > BigInt(Number.MAX_SAFE_INTEGER)) {
     base /= 10n;
     exponent += 1;
   }
