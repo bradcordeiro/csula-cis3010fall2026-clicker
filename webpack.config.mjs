@@ -5,9 +5,11 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const currentDir = import.meta.dirname;
 
+const mode = process.env.NODE_ENV ?? 'development';
+
 export default {
-  mode: process.env.NODE_ENV || 'development',
-  devtool: process.env.NODE_ENV === 'development' ? 'source-map' : false,
+  mode,
+  devtool: mode === 'development' ? 'source-map' : false,
   entry: path.resolve(currentDir, 'src', 'index.tsx'),
   resolve: { extensions: ['.tsx', '.ts', '.js', '.jsx'] },
   output: {
