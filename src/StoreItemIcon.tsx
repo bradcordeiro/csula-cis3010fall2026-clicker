@@ -9,15 +9,13 @@ import './images/autoclickericon-06-Happy Snowman With Red Scarf-3.png';
 import './images/autoclickericon-07-Smiling Gingerbread Christmas Game Icon-4.png';
 
 interface StoreItemIconProps {
-  icon?: string;
+  icon: string;
 }
 
 export default function StoreItemIcon(props: StoreItemIconProps): React.JSX.Element {
   const { icon } = props;
 
   return (
-    <span>
-      {icon ? <img className="image is-64x64 is-inline" src={`img/${icon}`} /> : <span />}
-    </span>
+    <img className="store-icon image is-64x64 is-inline" src={`img/${icon}`} />
   );
 }

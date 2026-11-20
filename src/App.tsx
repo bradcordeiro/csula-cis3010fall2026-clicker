@@ -74,36 +74,32 @@ export default function App(): React.JSX.Element {
 
   return (
     <div className='container-fluid'>
-      <div className='fixed-grid has-1-cols'>
-        <div className="grid mb-0">
-          <div className='has-text-centered total-row'>
-            <TotalClicks clickCount={clickCount} />
-          </div>
+      <div className="grid game mb-0">
+        <div className='has-text-centered total-row'>
+          <TotalClicks clickCount={clickCount} />
         </div>
-        <div className='columns height-560'>
-          <div className='column click-column is-one-third'>
-            <MainClick clickAdder={addClicks} />
-          </div>
-          <div className='column autoclicker-column is-one-third p-0'>
-            <ClickGenerators
-              names={autoClickerNames}
-              backgrounds={autoClickerBackgrounds}
-              icons={autoClickerIcons}
-              clicks={autoClickerClicks}
-              counts={autoClickerCounts}
-              clickAdder={addClicks}
-            />
-          </div>
-          <div className='column store-column is-one-third p-0'>
-            <Store
-              currentClicks={clickCount}
-              names={autoClickerNames}
-              costs={autoClickerCosts}
-              buy={buyAutoclicker}
-              icons={autoClickerIcons}
-              backgrounds={storeBackgrounds}
-            />
-          </div>
+        <div className='height-560 mainclick-column'>
+          <MainClick clickAdder={addClicks} />
+        </div>
+        <div className='height-560 clickgenerator-column'>
+          <ClickGenerators
+            names={autoClickerNames}
+            backgrounds={autoClickerBackgrounds}
+            icons={autoClickerIcons}
+            clicks={autoClickerClicks}
+            counts={autoClickerCounts}
+            clickAdder={addClicks}
+          />
+        </div>
+        <div className='height-560 store-column'>
+          <Store
+            currentClicks={clickCount}
+            names={autoClickerNames}
+            costs={autoClickerCosts}
+            buy={buyAutoclicker}
+            icons={autoClickerIcons}
+            backgrounds={storeBackgrounds}
+          />
         </div>
       </div>
     </div>

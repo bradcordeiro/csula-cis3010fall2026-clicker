@@ -21,7 +21,7 @@ export default function ClickGeneratorIcon(props: ClickGeneratorIconProps): Reac
   const icons: React.JSX.Element[] = Array(count);
 
   for (let i = 0; i < Math.min(count, maxVisibleIcons); i += 1) {
-    icons[i] = <img key={i} className="image is-32x32 is-inline" src={`img/${icon}`} />;
+    icons[i] = <img key={i} className="clickgenerator-icon image is-32x32 is-inline " src={`img/${icon}`} />;
   }
 
   return (

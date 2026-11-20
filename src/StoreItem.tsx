@@ -8,7 +8,7 @@ interface StoreItemProps {
   cost: number;
   currentClicks: bigint;
   index: number;
-  icon?: string;
+  icon: string;
   background: string;
 }
 
@@ -27,10 +27,10 @@ export default function StoreItem(props: StoreItemProps): React.JSX.Element {
 
   return (
     <div className="store-box" style={{ backgroundImage: `url("/img/${background}")` }}>
-      <button className={`button store-button ${disabled ? 'is-outline' : ''}`} disabled={disabled} onClick={() => buy(index)}>
+      <button className='button store-button' disabled={disabled} onClick={() => buy(index)}>
         <StoreItemIcon icon={icon} />
-        Buy {name} for {cost}
       </button>
+      <span>Buy {name} for {cost}</span>
     </div>
   );
 }

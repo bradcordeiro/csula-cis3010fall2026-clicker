@@ -37,7 +37,7 @@ export default function ClickGenerator(props: ClickGeneratorProps): React.JSX.El
   }, [count, clicks]);
 
   return (
-    <div className="autoclicker-box" style={{ backgroundImage: `url("/img/${background}")` }}>
+    <div className="clickgenerator-box" style={{ backgroundImage: `url("/img/${background}")` }}>
        <ClickGeneratorIcon count={count} icon={icon} />
     </div>
   );

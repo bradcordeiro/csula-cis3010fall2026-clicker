@@ -2,7 +2,16 @@
   gap: 0 !important;
 }
 
+.game {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "mainclick clickgenerators store";
+  grid-template-columns: auto 33% 33%;
+}
+
 .total-row {
+  grid-area: header;
   min-height: 84px;
 }
 
@@ -19,31 +28,49 @@
   height: 560px;
 }
 
-.click-column {
-  background-color: white;
+.mainclick-column {
+  grid-area: mainclick;
 }
 
-.autoclicker-column {
-  background-color: green;
+.clickgenerator-column {
+  grid-area: clickgenerators;
 }
 
-.store-column {
-  background-color: red;
-}
-
-.store-button {
-  height: 70px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.autoclicker-box {
+.clickgenerator-box {
   background-size: cover;
   height: 80px;
   overflow: hidden;
 }
 
+.clickgenerator-icon {
+	filter: drop-shadow(2px 2px 1px rgba(0, 0, 0, 1));
+}
+
+.store-column {
+  grid-area: store;
+}
+
 .store-box {
   background-size: cover;
   height: 80px;
+}
+
+.store-button {
+  height: 70px;
+  border: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: transparent;
+}
+
+.store-button[disabled] {
+  background-color: transparent;
+}
+
+.store-icon {
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1))
+}
+
+.store-button[disabled] > img {
+  filter: saturate(0);
 }

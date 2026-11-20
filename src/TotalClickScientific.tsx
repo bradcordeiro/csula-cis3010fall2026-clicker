@@ -10,7 +10,7 @@ export default function TotalClickScientific(props: TotalClicksProps): React.JSX
   const { count } = props;
 
   const [baseStr, expStr] = count.toLocaleString('en-US', { notation: 'scientific', maximumFractionDigits: 3 })
-    .split('e');
+    .split('E');
 
   const base = Number.parseFloat(baseStr);
   const exponent = Number.parseInt(expStr, 10);

@@ -12,8 +12,8 @@ interface TotalClicksProps {
 export default function TotalClicks(props: TotalClicksProps): React.JSX.Element {
   const { clickCount } = props;
 
-  if (clickCount < BigInt(Number.MAX_SAFE_INTEGER)) {
-    return <TotalClickInteger count={Number(clickCount)} />;
+  if (clickCount < Number.MAX_SAFE_INTEGER) {
+    return <TotalClickInteger count={clickCount} />;
   }
 
   return <TotalClickScientific count={clickCount} />;
